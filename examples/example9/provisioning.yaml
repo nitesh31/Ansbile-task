@@ -1,0 +1,114 @@
+---
+- name: Provisioning server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install NTP pkg in CentOS
+      yum:
+        name: "{{item}}"
+        state: present
+      when: ansible_distribution == "CentOS"
+      loop:
+        - chrony
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Install NTP pkg in Ubuntu
+      apt:
+        name: "{{item}}"
+        state: present
+      when: ansible_distribution == "Ubuntu"
+      loop:
+        - chrony
+        - wget
+        - git
+        - zip
+        - unzip
+
+    - name: Start and enable NTP service
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Start and enable NTP service on Ubuntu
+      service:
+        name: chrony
+        state: started
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+
+    - name: Add Group
+      group: 
+       name: devops
+       state: present
+
+    - name: Add users
+      user: 
+        name: "{{item}}"
+        state: present
+        groups: devops
+      loop: "{{usernames}}"
+    
+    - name: "Update sshd config file"
+      become: yes
+      become_user: root
+      lineinfile:
+       path: /etc/ssh/sshd_config
+       regexp: "#Banner none"
+       line: "Banner /etc/motd"
+       state: present
+      notify:
+        Restart sshd service
+
+    - name: Deploy chrony config file for CentOS
+      template:
+       src: templates/chrony-redhat.conf.j2
+       dest: /etc/chrony.conf
+      when: ansible_os_family == "RedHat"
+      notify:
+        Restart chronyd service on CentOS
+
+    - name: Deploy chrony config file for Ubuntu
+      template:
+       src: templates/chrony-debian.conf.j2
+       dest: /etc/chrony/chrony.conf
+      when: ansible_os_family == "Debian"
+      notify:
+        Restart chronyd service on Debian
+    
+    - name: Directory for files
+      file:
+       path: /opt/tmpdir
+       state: directory
+       mode: 0755
+
+  handlers:  
+    - name: Restart chronyd service on Debian
+      service:
+       name: chronyd
+       state: restarted
+       enabled: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Restart chronyd service on CentOS
+      service:
+       name: chronyd
+       state: restarted
+       enabled: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: Restart sshd service
+      service:
+       name: sshd
+       state: restarted
+       enabled: yes  
+
+
+
+
+

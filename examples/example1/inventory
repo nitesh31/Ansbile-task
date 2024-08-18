@@ -1,0 +1,14 @@
+web1 ansbile_host=192.168.56.15 ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.ssh/id_rsa
+web3 ansbile_host=192.168.56.18 ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.ssh/id_rsa
+
+
+
+[webserver]
+web1
+web3
+
+[dbserver]
+db1
+db2
+
+

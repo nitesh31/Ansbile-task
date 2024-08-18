@@ -1,0 +1,35 @@
+2024-08-18 05:54:54,758 p=20473 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example5/inventory with yaml plugin: YAML inventory has invalid structure, it should be a dictionary, got: <class
+'ansible.parsing.yaml.objects.AnsibleUnicode'>
+
+2024-08-18 05:54:54,760 p=20473 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example5/inventory with ini plugin: /home/vagrant/examples/example5/inventory:18: Section [myservers:vars] not valid
+for undefined group: myservers
+
+2024-08-18 05:54:54,761 p=20473 u=vagrant n=ansible | [WARNING]: Unable to parse /home/vagrant/examples/example5/inventory as an inventory source
+
+2024-08-18 05:54:54,761 p=20473 u=vagrant n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-08-18 05:54:54,947 p=20473 u=vagrant n=ansible | PLAY [Setup WebServer] *****************************************************************************************************************************************************
+2024-08-18 05:54:54,966 p=20473 u=vagrant n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************
+2024-08-18 05:54:58,314 p=20473 u=vagrant n=ansible | ok: [web1]
+2024-08-18 05:54:58,335 p=20473 u=vagrant n=ansible | TASK [Install apache2] *****************************************************************************************************************************************************
+2024-08-18 05:55:06,028 p=20473 u=vagrant n=ansible | ok: [web1]
+2024-08-18 05:55:06,038 p=20473 u=vagrant n=ansible | TASK [Start apache2] *******************************************************************************************************************************************************
+2024-08-18 05:55:07,260 p=20473 u=vagrant n=ansible | ok: [web1]
+2024-08-18 05:55:07,270 p=20473 u=vagrant n=ansible | TASK [Deploy webconfig] ****************************************************************************************************************************************************
+2024-08-18 05:55:08,473 p=20473 u=vagrant n=ansible | ok: [web1]
+2024-08-18 05:55:08,498 p=20473 u=vagrant n=ansible | PLAY [Setup DB server] *****************************************************************************************************************************************************
+2024-08-18 05:55:08,505 p=20473 u=vagrant n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************
+2024-08-18 05:55:10,497 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:10,515 p=20473 u=vagrant n=ansible | TASK [Install mongodb] *****************************************************************************************************************************************************
+2024-08-18 05:55:23,848 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:23,860 p=20473 u=vagrant n=ansible | TASK [Start and enable mariadb-server] *************************************************************************************************************************************
+2024-08-18 05:55:24,897 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:24,907 p=20473 u=vagrant n=ansible | TASK [Install python3-pymysql] *********************************************************************************************************************************************
+2024-08-18 05:55:27,124 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:27,133 p=20473 u=vagrant n=ansible | TASK [Create a new db 'devopsdb'] ******************************************************************************************************************************************
+2024-08-18 05:55:28,107 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:28,118 p=20473 u=vagrant n=ansible | TASK [Create database user] ************************************************************************************************************************************************
+2024-08-18 05:55:29,145 p=20473 u=vagrant n=ansible | ok: [db1]
+2024-08-18 05:55:29,162 p=20473 u=vagrant n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
+2024-08-18 05:55:29,163 p=20473 u=vagrant n=ansible | db1                        : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-08-18 05:55:29,164 p=20473 u=vagrant n=ansible | web1                       : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

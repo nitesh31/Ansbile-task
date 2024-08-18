@@ -1,0 +1,21 @@
+---
+- name: Start and enable Apache HTTPD Service
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: Ensure httpd is installed
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure httpd service is started and enabled
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Deploy webconfig
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
