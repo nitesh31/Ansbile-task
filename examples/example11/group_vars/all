@@ -1,0 +1,9 @@
+usernames:
+- student1
+- student2
+- student3
+- student4
+
+ntp0: 0.europe.pool.ntp.org
+ntp1: 1.europe.pool.ntp.org
+ntp2: 2.europe.pool.ntp.org

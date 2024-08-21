@@ -2530,3 +2530,184 @@ for undefined group: myservers
 2024-08-21 12:59:56,285 p=42761 u=vagrant n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
 2024-08-21 12:59:56,286 p=42761 u=vagrant n=ansible | db1                        : ok=11   changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 2024-08-21 12:59:56,288 p=42761 u=vagrant n=ansible | web1                       : ok=11   changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2024-08-21 13:28:42,837 p=43897 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with yaml plugin: YAML inventory has invalid structure, it should be a dictionary, got: <class
+'ansible.parsing.yaml.objects.AnsibleUnicode'>
+
+2024-08-21 13:28:42,839 p=43897 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with ini plugin: /home/vagrant/examples/example10/inventory:19: Section [myservers:vars] not valid
+for undefined group: myservers
+
+2024-08-21 13:28:42,840 p=43897 u=vagrant n=ansible | [WARNING]: Unable to parse /home/vagrant/examples/example10/inventory as an inventory source
+
+2024-08-21 13:28:42,841 p=43897 u=vagrant n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-08-21 13:28:42,949 p=43897 u=vagrant n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/home/vagrant/examples/example10/provisioning.yaml': line 78, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        dest: /etc/chrony/chrony.conf
+       when: ansible_os_family == "Debian"
+       ^ here
+
+2024-08-21 13:29:42,461 p=43926 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with yaml plugin: YAML inventory has invalid structure, it should be a dictionary, got: <class
+'ansible.parsing.yaml.objects.AnsibleUnicode'>
+
+2024-08-21 13:29:42,462 p=43926 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with ini plugin: /home/vagrant/examples/example10/inventory:19: Section [myservers:vars] not valid
+for undefined group: myservers
+
+2024-08-21 13:29:42,463 p=43926 u=vagrant n=ansible | [WARNING]: Unable to parse /home/vagrant/examples/example10/inventory as an inventory source
+
+2024-08-21 13:29:42,464 p=43926 u=vagrant n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-08-21 13:29:42,676 p=43926 u=vagrant n=ansible | PLAY [Provisioning server] *************************************************************************************************************************************************
+2024-08-21 13:29:42,700 p=43926 u=vagrant n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************
+2024-08-21 13:29:45,345 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:29:45,445 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:29:45,473 p=43926 u=vagrant n=ansible | TASK [Install NTP pkg in CentOS] *******************************************************************************************************************************************
+2024-08-21 13:29:45,561 p=43926 u=vagrant n=ansible | skipping: [web1] => (item=chrony) 
+2024-08-21 13:29:45,567 p=43926 u=vagrant n=ansible | skipping: [web1] => (item=wget) 
+2024-08-21 13:29:45,577 p=43926 u=vagrant n=ansible | skipping: [web1] => (item=git) 
+2024-08-21 13:29:45,607 p=43926 u=vagrant n=ansible | skipping: [web1] => (item=zip) 
+2024-08-21 13:29:45,610 p=43926 u=vagrant n=ansible | skipping: [web1] => (item=unzip) 
+2024-08-21 13:29:50,935 p=43926 u=vagrant n=ansible | ok: [db1] => (item=chrony)
+2024-08-21 13:29:53,645 p=43926 u=vagrant n=ansible | ok: [db1] => (item=wget)
+2024-08-21 13:29:56,109 p=43926 u=vagrant n=ansible | ok: [db1] => (item=git)
+2024-08-21 13:29:58,675 p=43926 u=vagrant n=ansible | ok: [db1] => (item=zip)
+2024-08-21 13:30:01,191 p=43926 u=vagrant n=ansible | ok: [db1] => (item=unzip)
+2024-08-21 13:30:01,214 p=43926 u=vagrant n=ansible | TASK [Install NTP pkg in Ubuntu] *******************************************************************************************************************************************
+2024-08-21 13:30:01,369 p=43926 u=vagrant n=ansible | skipping: [db1] => (item=chrony) 
+2024-08-21 13:30:01,386 p=43926 u=vagrant n=ansible | skipping: [db1] => (item=wget) 
+2024-08-21 13:30:01,405 p=43926 u=vagrant n=ansible | skipping: [db1] => (item=git) 
+2024-08-21 13:30:01,425 p=43926 u=vagrant n=ansible | skipping: [db1] => (item=zip) 
+2024-08-21 13:30:01,440 p=43926 u=vagrant n=ansible | skipping: [db1] => (item=unzip) 
+2024-08-21 13:30:04,069 p=43926 u=vagrant n=ansible | ok: [web1] => (item=chrony)
+2024-08-21 13:30:06,083 p=43926 u=vagrant n=ansible | ok: [web1] => (item=wget)
+2024-08-21 13:30:08,192 p=43926 u=vagrant n=ansible | ok: [web1] => (item=git)
+2024-08-21 13:30:10,350 p=43926 u=vagrant n=ansible | ok: [web1] => (item=zip)
+2024-08-21 13:30:12,436 p=43926 u=vagrant n=ansible | ok: [web1] => (item=unzip)
+2024-08-21 13:30:12,458 p=43926 u=vagrant n=ansible | TASK [Start and enable NTP service] ****************************************************************************************************************************************
+2024-08-21 13:30:12,525 p=43926 u=vagrant n=ansible | skipping: [web1]
+2024-08-21 13:30:14,269 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:30:14,283 p=43926 u=vagrant n=ansible | TASK [Start and enable NTP service on Ubuntu] ******************************************************************************************************************************
+2024-08-21 13:30:14,389 p=43926 u=vagrant n=ansible | skipping: [db1]
+2024-08-21 13:30:15,262 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:30:15,280 p=43926 u=vagrant n=ansible | TASK [Add Group] ***********************************************************************************************************************************************************
+2024-08-21 13:30:16,330 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:30:16,513 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:30:16,529 p=43926 u=vagrant n=ansible | TASK [Add users] ***********************************************************************************************************************************************************
+2024-08-21 13:30:17,907 p=43926 u=vagrant n=ansible | ok: [web1] => (item=student1)
+2024-08-21 13:30:18,210 p=43926 u=vagrant n=ansible | ok: [db1] => (item=student1)
+2024-08-21 13:30:18,805 p=43926 u=vagrant n=ansible | ok: [web1] => (item=student2)
+2024-08-21 13:30:19,380 p=43926 u=vagrant n=ansible | ok: [db1] => (item=student2)
+2024-08-21 13:30:19,440 p=43926 u=vagrant n=ansible | ok: [web1] => (item=student3)
+2024-08-21 13:30:20,220 p=43926 u=vagrant n=ansible | ok: [web1] => (item=student4)
+2024-08-21 13:30:20,631 p=43926 u=vagrant n=ansible | ok: [db1] => (item=student3)
+2024-08-21 13:30:21,621 p=43926 u=vagrant n=ansible | ok: [db1] => (item=student4)
+2024-08-21 13:30:21,644 p=43926 u=vagrant n=ansible | TASK [Add motd banner] *****************************************************************************************************************************************************
+2024-08-21 13:30:23,493 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:30:23,788 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:30:23,803 p=43926 u=vagrant n=ansible | TASK [Add ssh banner] ******************************************************************************************************************************************************
+2024-08-21 13:30:24,804 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:30:25,027 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:30:25,042 p=43926 u=vagrant n=ansible | TASK [Restart sshd service] ************************************************************************************************************************************************
+2024-08-21 13:30:26,295 p=43926 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:30:26,624 p=43926 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:30:26,644 p=43926 u=vagrant n=ansible | TASK [Update NTP conf in debian] *******************************************************************************************************************************************
+2024-08-21 13:30:26,786 p=43926 u=vagrant n=ansible | skipping: [db1]
+2024-08-21 13:30:28,425 p=43926 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:30:28,435 p=43926 u=vagrant n=ansible | TASK [Update NTP conf in Redhat] *******************************************************************************************************************************************
+2024-08-21 13:30:28,509 p=43926 u=vagrant n=ansible | skipping: [web1]
+2024-08-21 13:30:30,301 p=43926 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:30:30,318 p=43926 u=vagrant n=ansible | TASK [Restart chronyd service] *********************************************************************************************************************************************
+2024-08-21 13:30:31,480 p=43926 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:30:31,902 p=43926 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:30:31,918 p=43926 u=vagrant n=ansible | TASK [Directory for files] *************************************************************************************************************************************************
+2024-08-21 13:30:32,527 p=43926 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:30:32,968 p=43926 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:30:32,996 p=43926 u=vagrant n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
+2024-08-21 13:30:32,997 p=43926 u=vagrant n=ansible | db1                        : ok=11   changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2024-08-21 13:30:32,998 p=43926 u=vagrant n=ansible | web1                       : ok=11   changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2024-08-21 13:43:45,645 p=44638 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with yaml plugin: YAML inventory has invalid structure, it should be a dictionary, got: <class
+'ansible.parsing.yaml.objects.AnsibleUnicode'>
+
+2024-08-21 13:43:45,649 p=44638 u=vagrant n=ansible | [WARNING]:  * Failed to parse /home/vagrant/examples/example10/inventory with ini plugin: /home/vagrant/examples/example10/inventory:19: Section [myservers:vars] not valid
+for undefined group: myservers
+
+2024-08-21 13:43:45,650 p=44638 u=vagrant n=ansible | [WARNING]: Unable to parse /home/vagrant/examples/example10/inventory as an inventory source
+
+2024-08-21 13:43:45,651 p=44638 u=vagrant n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-08-21 13:43:45,874 p=44638 u=vagrant n=ansible | PLAY [Provisioning server] *************************************************************************************************************************************************
+2024-08-21 13:43:45,896 p=44638 u=vagrant n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************
+2024-08-21 13:43:48,986 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:43:49,225 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:43:49,264 p=44638 u=vagrant n=ansible | TASK [Install NTP pkg in CentOS] *******************************************************************************************************************************************
+2024-08-21 13:43:49,358 p=44638 u=vagrant n=ansible | skipping: [web1] => (item=chrony) 
+2024-08-21 13:43:49,374 p=44638 u=vagrant n=ansible | skipping: [web1] => (item=wget) 
+2024-08-21 13:43:49,393 p=44638 u=vagrant n=ansible | skipping: [web1] => (item=git) 
+2024-08-21 13:43:49,395 p=44638 u=vagrant n=ansible | skipping: [web1] => (item=zip) 
+2024-08-21 13:43:49,396 p=44638 u=vagrant n=ansible | skipping: [web1] => (item=unzip) 
+2024-08-21 13:43:55,684 p=44638 u=vagrant n=ansible | ok: [db1] => (item=chrony)
+2024-08-21 13:43:58,195 p=44638 u=vagrant n=ansible | ok: [db1] => (item=wget)
+2024-08-21 13:44:00,630 p=44638 u=vagrant n=ansible | ok: [db1] => (item=git)
+2024-08-21 13:44:03,269 p=44638 u=vagrant n=ansible | ok: [db1] => (item=zip)
+2024-08-21 13:44:06,454 p=44638 u=vagrant n=ansible | ok: [db1] => (item=unzip)
+2024-08-21 13:44:06,484 p=44638 u=vagrant n=ansible | TASK [Install NTP pkg in Ubuntu] *******************************************************************************************************************************************
+2024-08-21 13:44:06,654 p=44638 u=vagrant n=ansible | skipping: [db1] => (item=chrony) 
+2024-08-21 13:44:06,684 p=44638 u=vagrant n=ansible | skipping: [db1] => (item=wget) 
+2024-08-21 13:44:06,715 p=44638 u=vagrant n=ansible | skipping: [db1] => (item=git) 
+2024-08-21 13:44:06,730 p=44638 u=vagrant n=ansible | skipping: [db1] => (item=zip) 
+2024-08-21 13:44:06,752 p=44638 u=vagrant n=ansible | skipping: [db1] => (item=unzip) 
+2024-08-21 13:44:09,662 p=44638 u=vagrant n=ansible | ok: [web1] => (item=chrony)
+2024-08-21 13:44:12,174 p=44638 u=vagrant n=ansible | ok: [web1] => (item=wget)
+2024-08-21 13:44:14,680 p=44638 u=vagrant n=ansible | ok: [web1] => (item=git)
+2024-08-21 13:44:16,988 p=44638 u=vagrant n=ansible | ok: [web1] => (item=zip)
+2024-08-21 13:44:19,385 p=44638 u=vagrant n=ansible | ok: [web1] => (item=unzip)
+2024-08-21 13:44:19,405 p=44638 u=vagrant n=ansible | TASK [Start and enable NTP service] ****************************************************************************************************************************************
+2024-08-21 13:44:19,483 p=44638 u=vagrant n=ansible | skipping: [web1]
+2024-08-21 13:44:21,415 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:44:21,429 p=44638 u=vagrant n=ansible | TASK [Start and enable NTP service on Ubuntu] ******************************************************************************************************************************
+2024-08-21 13:44:21,561 p=44638 u=vagrant n=ansible | skipping: [db1]
+2024-08-21 13:44:22,523 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:44:22,547 p=44638 u=vagrant n=ansible | TASK [Add Group] ***********************************************************************************************************************************************************
+2024-08-21 13:44:23,631 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:44:23,863 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:44:23,884 p=44638 u=vagrant n=ansible | TASK [Add users] ***********************************************************************************************************************************************************
+2024-08-21 13:44:25,106 p=44638 u=vagrant n=ansible | ok: [web1] => (item=student1)
+2024-08-21 13:44:25,354 p=44638 u=vagrant n=ansible | ok: [db1] => (item=student1)
+2024-08-21 13:44:25,848 p=44638 u=vagrant n=ansible | ok: [web1] => (item=student2)
+2024-08-21 13:44:26,376 p=44638 u=vagrant n=ansible | ok: [db1] => (item=student2)
+2024-08-21 13:44:26,560 p=44638 u=vagrant n=ansible | ok: [web1] => (item=student3)
+2024-08-21 13:44:27,429 p=44638 u=vagrant n=ansible | ok: [web1] => (item=student4)
+2024-08-21 13:44:27,654 p=44638 u=vagrant n=ansible | ok: [db1] => (item=student3)
+2024-08-21 13:44:28,629 p=44638 u=vagrant n=ansible | ok: [db1] => (item=student4)
+2024-08-21 13:44:28,658 p=44638 u=vagrant n=ansible | TASK [Add motd banner] *****************************************************************************************************************************************************
+2024-08-21 13:44:30,513 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:44:30,723 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:44:30,741 p=44638 u=vagrant n=ansible | TASK [Add ssh banner] ******************************************************************************************************************************************************
+2024-08-21 13:44:31,740 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:44:32,008 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:44:32,023 p=44638 u=vagrant n=ansible | TASK [Restart sshd service] ************************************************************************************************************************************************
+2024-08-21 13:44:33,301 p=44638 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:44:33,479 p=44638 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:44:33,499 p=44638 u=vagrant n=ansible | TASK [Update NTP conf in debian] *******************************************************************************************************************************************
+2024-08-21 13:44:33,606 p=44638 u=vagrant n=ansible | skipping: [db1]
+2024-08-21 13:44:35,107 p=44638 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:44:35,120 p=44638 u=vagrant n=ansible | TASK [Update NTP conf in Redhat] *******************************************************************************************************************************************
+2024-08-21 13:44:35,193 p=44638 u=vagrant n=ansible | skipping: [web1]
+2024-08-21 13:44:36,957 p=44638 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:44:36,970 p=44638 u=vagrant n=ansible | TASK [Restart chronyd service] *********************************************************************************************************************************************
+2024-08-21 13:44:38,029 p=44638 u=vagrant n=ansible | changed: [web1]
+2024-08-21 13:44:38,340 p=44638 u=vagrant n=ansible | changed: [db1]
+2024-08-21 13:44:38,366 p=44638 u=vagrant n=ansible | TASK [Directory for files] *************************************************************************************************************************************************
+2024-08-21 13:44:38,984 p=44638 u=vagrant n=ansible | ok: [web1]
+2024-08-21 13:44:39,434 p=44638 u=vagrant n=ansible | ok: [db1]
+2024-08-21 13:44:39,473 p=44638 u=vagrant n=ansible | PLAY RECAP *****************************************************************************************************************************************************************
+2024-08-21 13:44:39,474 p=44638 u=vagrant n=ansible | db1                        : ok=11   changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2024-08-21 13:44:39,476 p=44638 u=vagrant n=ansible | web1                       : ok=11   changed=3    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   

@@ -1,0 +1,12 @@
+---
+
+- name: Fact variables
+  hosts: all
+  become: yes
+  tasks:
+    - name: print OS name
+      debug:
+       var: ansible_distribution
+    - name: Print memory information 
+      debug:
+       var: ansible_memory_mb.real.free    

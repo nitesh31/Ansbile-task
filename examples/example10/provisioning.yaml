@@ -71,34 +71,24 @@
         name: sshd
         state: restarted
 
-    - name: "Update sshd config file"
-      become: yes
-      become_user: root
-      lineinfile:
-       path: /etc/ssh/sshd_config
-       regexp: "#Banner none"
-       line: "Banner /etc/motd"
-       state: present
-      notify:
-        Restart sshd service
-
-    - name: Deploy chrony config file for CentOS
-      template:
-       src: templates/chrony-redhat.conf.j2
-       dest: /etc/chrony.conf
-      when: ansible_os_family == "RedHat"
-      notify:
-        Restart chronyd service on CentOS
-
-    - name: Deploy chrony config file for Ubuntu
-      template:
-       src: templates/chrony-debian.conf.j2
-       dest: /etc/chrony/chrony.conf
+    - name: Update NTP conf in debian
+      template: 
+        src: templates/ntp_debian.conf.j2
+        dest: /etc/chrony/chrony.conf
       when: ansible_os_family == "Debian"
-      notify:
-        Restart chronyd service on Debian
+
+    - name: Update NTP conf in Redhat
+      template:
+        src: templates/ntp_redhat.conf.j2
+        dest: /etc/chrony.conf
+      when: ansible_os_family == "RedHat"
+
+    - name: Restart chronyd service
+      service: 
+        name: chronyd
+        state: restarted
+
     
-     
 
 
 

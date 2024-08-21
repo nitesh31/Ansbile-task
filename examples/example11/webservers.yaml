@@ -1,0 +1,63 @@
+---
+- name: Setup WebServer
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+ 
+    - name: Start apache2
+      service:
+         name: apache2
+         state: started
+         enabled: yes
+
+    - name: Deploy webconfig
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+  
+       
+- name: Setup DB server
+  hosts: dbservers
+  become: yes
+  tasks:
+    - debug:
+        var: dbname
+
+    - debug :
+        msg : "Value of db user is {{dbuser}}"
+    - name: Install mongodb
+      yum:
+        name: mariadb-server
+        state: present
+      become: true    
+    - name: Start and enable mariadb-server
+      service: 
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Install python3-pymysql
+      yum:
+        name: python3-PyMySQL
+        state: present
+  
+    - name: Create a new db 'devopsdb'
+      mysql_db:
+        name: "{{dbname}}"
+        state: present
+
+
+    - name: Create database user
+      mysql_user:
+        name: "{{dbuser}}"
+        password: "{{dbpass}}"
+        priv: '*.*:ALL'
+        state: present
+
+
